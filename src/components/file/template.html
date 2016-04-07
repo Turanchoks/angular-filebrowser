@@ -1,0 +1,22 @@
+<li>
+    <span>
+        <span ng-if="$ctrl.file.folder" ng-click="$ctrl.file.expanded = !$ctrl.file.expanded">
+            <span class="glyphicon glyphicon-{{ $ctrl.file.expanded ? 'minus' : 'plus' }}-sign"></span>
+        </span>
+
+        <span ng-if="$ctrl.file.isData">
+            <input type="checkbox" ng-model="$ctrl.file.isSelected">
+        </span>
+
+        <span ng-if="$ctrl.file.folder" class="glyphicon glyphicon-folder-{{ $ctrl.file.expanded ? 'open' : 'close' }}"></span>
+        <span ng-if="!$ctrl.file.folder" class="glyphicon glyphicon-file"></span>
+        
+        <span ng-dblclick="$ctrl.file.editing = true;" ng-show="!$ctrl.file.editing">{{ $ctrl.file.name }}</span>
+        <input type="text" ng-model="$ctrl.file.name" off-click="$ctrl.file.editing = false;" ng-show="$ctrl.file.editing">
+    </span>
+    
+    <ul ng-if="$ctrl.file.folder" ng-show="$ctrl.file.expanded" class="filebrowser-list">
+        <file ng-repeat="file in $ctrl.file.children" file="file"></file>
+    </ul>
+
+</li>

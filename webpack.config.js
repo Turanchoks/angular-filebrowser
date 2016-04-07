@@ -1,10 +1,10 @@
 module.exports = {
-    context: './src',
+    context: __dirname + '/src',
 
-    entry: './app.js',
+    entry: './example/example.js',
 
     output: {
-        path: './dist',
+        path: __dirname + '/dist',
         filename: '[name].js',
     },
 
@@ -28,21 +28,6 @@ module.exports = {
         }, {
             test: /\.html$/,
             loader: 'html'
-        }, {
-            test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
-            loader: "url?limit=10000&mimetype=application/font-woff"
-        }, {
-            test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
-            loader: "url?limit=10000&mimetype=application/font-woff"
-        }, {
-            test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-            loader: "url?limit=10000&mimetype=application/octet-stream"
-        }, {
-            test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-            loader: "file"
-        }, {
-            test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-            loader: "url?limit=10000&mimetype=image/svg+xml"
         }]
     },
 
@@ -53,7 +38,8 @@ module.exports = {
             aggregateTimeout: 300,
             poll: 1000
         },
-        inline: true
+        inline: true,
+        contentBase: __dirname + '/src/example'
     }
 
 };
