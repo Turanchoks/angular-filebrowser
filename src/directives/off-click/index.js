@@ -5,7 +5,7 @@ export default ($parse, $document) => {
             const fn = $parse(attr.offClick);
 
             var handler = (event) => {
-                if ((element[0] !== event.target) && (0 === element.find(event.target).length)) {
+                if (!element[0].contains(event.target)) {
                     scope.$apply(() => {
                         fn(scope, {});
                     });
