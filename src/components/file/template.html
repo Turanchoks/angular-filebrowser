@@ -1,27 +1,33 @@
-<li>
-    <span>
-        <span ng-if="$ctrl.file.folder" ng-click="$ctrl.file.expanded = !$ctrl.file.expanded">
-            <span class="glyphicon glyphicon-{{ $ctrl.file.expanded ? 'minus' : 'plus' }}-sign"></span>
-        </span>
+<span>
+    <span ng-if="$ctrl.file.folder" ng-click="$ctrl.file.expanded = !$ctrl.file.expanded">
+        <span class="glyphicon glyphicon-{{ $ctrl.file.expanded ? 'minus' : 'plus' }}-sign"></span>
+    </span>
 
-        <span ng-if="$ctrl.file.isData">
-            <input type="checkbox" ng-model="$ctrl.file.isSelected">
-        </span>
+    <span ng-if="$ctrl.file.isData">
+        <input type="checkbox" ng-model="$ctrl.file.isSelected">
+    </span>
 
-        <span ng-if="$ctrl.file.folder" class="glyphicon glyphicon-folder-{{ $ctrl.file.expanded ? 'open' : 'close' }}"></span>
-        <span ng-if="!$ctrl.file.folder" class="glyphicon glyphicon-file"></span>
-        
-        <span ng-dblclick="$ctrl.startEdit()" ng-if="!$ctrl.file.editing">{{ $ctrl.file.name }}</span>
-        <span off-click="$ctrl.finishEdit()" ng-if="$ctrl.file.editing" class="input-group edited-filename">
-            <input type="text" ng-model="$ctrl.file.editedName" ng-keydown="$ctrl.keyPress($event)" class="form-control">
-            <span class="input-group-btn">
-                <button class="btn btn-default" type="button" ng-click="$ctrl.finishEdit(true)">Save</button>
-            </span>
+    <span ng-if="$ctrl.file.folder" class="glyphicon glyphicon-folder-{{ $ctrl.file.expanded ? 'open' : 'close' }}"></span>
+    <span ng-if="!$ctrl.file.folder" class="glyphicon glyphicon-file"></span>
+    <span ng-dblclick="$ctrl.startEdit()" ng-if="!$ctrl.file.editing">{{ $ctrl.file.name }}</span>
+
+    <span off-click="$ctrl.finishEdit()" ng-if="$ctrl.file.editing" class="input-group edited-filename">
+        <input type="text" ng-model="$ctrl.file.editedName" ng-keydown="$ctrl.keyPress($event)" class="form-control">
+        <span class="input-group-btn">
+            <button class="btn btn-default" type="button" ng-click="$ctrl.finishEdit(true)">Save</button>
         </span>
     </span>
-    
-    <ul ng-if="$ctrl.file.folder" ng-show="$ctrl.file.expanded" class="filebrowser-list">
-        <file ng-repeat="file in $ctrl.file.children" file="file"></file>
-    </ul>
+</span>
+<ul ng-if="$ctrl.file.folder" 
+    ng-show="$ctrl.file.expanded" 
+    class="filebrowser-list">
 
-</li>
+    <li ng-repeat="file in $ctrl.file.children"
+        dnd-draggable="file"
+        dnd-effect-allowed="move"
+        dnd-moved="$ctrl.file.children.splice($index, 1)">
+        <div dnd-list="file.children || $ctrl.file.children">
+            <file file="file"></file>
+        </div>
+    </li>
+</ul>

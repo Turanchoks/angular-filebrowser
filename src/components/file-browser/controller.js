@@ -28,8 +28,6 @@ export default class {
             if (selectedFilesFromFile) {
                 selectedFiles = selectedFiles.concat(selectedFilesFromFile);
             }
-
-            // selectedFiles = selectedFiles.concat(getSelectedFilesFromFile(this.files[i]));
         }
         console.log(selectedFiles);
         return selectedFiles;
