@@ -4,6 +4,17 @@
     height: 20px;
 }
 
+[dnd-list],
+[dnd-list] > li {
+    position: relative;
+}
+
 .dndDraggingSource {
     display: none;
+}
+
+.dndPlaceholder {
+    min-height: 20px;
+    background-color: CornflowerBlue;
+    border: 1px solid #ddd;
 }

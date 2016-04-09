@@ -20,14 +20,12 @@
 </span>
 <ul ng-if="$ctrl.file.folder" 
     ng-show="$ctrl.file.expanded" 
-    class="filebrowser-list">
+    class="filebrowser-list" dnd-list="$ctrl.file.children">
 
     <li ng-repeat="file in $ctrl.file.children"
         dnd-draggable="file"
         dnd-effect-allowed="move"
         dnd-moved="$ctrl.file.children.splice($index, 1)">
-        <div dnd-list="file.children || $ctrl.file.children">
             <file file="file"></file>
-        </div>
     </li>
 </ul>
