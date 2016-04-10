@@ -6,8 +6,12 @@ export default class {
         this.file.editing = true;
     }
 
+    nameIsChanged(){
+        return this.file.editedName !== this.file.name;
+    }
+
     finishEdit(save) {
-        if (this.file.editedName !== this.file.name && save) {
+        if (this.nameIsChanged() && save) {
             this.updateFileName(this.file, this.file.editedName);
         }
         this.file.editing = false;

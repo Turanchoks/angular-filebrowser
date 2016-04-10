@@ -7,7 +7,9 @@ export default ($parse, $document) => {
             var handler = (event) => {
                 if (!element[0].contains(event.target)) {
                     scope.$apply(() => {
-                        fn(scope, {});
+                        if (!scope.$parent.$ctrl.nameIsChanged() || confirm('Отменить изменения?')) {
+                            fn(scope, {});
+                        }
                     });
                 }
             };
