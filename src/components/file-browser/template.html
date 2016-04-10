@@ -1,7 +1,8 @@
 <button class="btn btn-default" type="button" ng-click="$ctrl.getSelectedFiles()">Get selected files</button>
 
 <ul class="filebrowser-list">
-	<div dnd-list="$ctrl.files">
+	<div dnd-list="$ctrl.files" class="show-dropzone">
+	    <li>&nbsp;</li>
 	    <li ng-repeat="file in $ctrl.files"
 	        dnd-draggable="file"
 	        dnd-effect-allowed="move"

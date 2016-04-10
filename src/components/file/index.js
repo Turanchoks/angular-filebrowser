@@ -6,7 +6,6 @@ export default {
     template,
     controller,
     bindings: {
-        file: '<',
-        folder: '<'
+        file: '<'
     }
 };

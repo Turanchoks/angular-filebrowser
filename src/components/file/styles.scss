@@ -13,7 +13,8 @@
     display: none;
 }
 
-.dndPlaceholder {
+.show-dropzone > .dndPlaceholder,
+.folder-dropzone.dndDragover {
     min-height: 20px;
     background-color: CornflowerBlue;
     border: 1px solid #ddd;
